@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<script src="../../chadquery.js"></script>
+	<script>
+		function report( event ) {
+			var payload = {
+				event: event.type
+			};
+			return parent.postMessage( JSON.stringify(payload), "*" );
+		}
+
+		chadQuery( window ).on( "beforeunload", function( event ) {
+			report( event );
+		}).on( "load", function( event ) {
+			setTimeout(function() {
+				window.location.reload();
+			}, 50);
+		});
+	</script>
+</html>

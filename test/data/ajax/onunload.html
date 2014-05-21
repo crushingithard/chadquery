@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>onunload ajax requests (#14379)</title>
+	<script src="../../chadquery.js"></script>
+</head>
+<body>
+	<form id="navigate" action="../iframe.html"></form>
+	<script>
+		chadQuery( window ).on( "unload", function() {
+			var ajaxStatus;
+			chadQuery.ajax({
+				url: "../name.html",
+				async: false,
+				complete: function( xhr, status ) {
+					ajaxStatus = status;
+				}
+			});
+			parent.iframeCallback( ajaxStatus );
+		});
+
+		chadQuery(function() {
+			setTimeout(function() {
+				document.getElementById( "navigate" ).submit();
+			}, 0 );
+		});
+	</script>
+</body>
+</html>

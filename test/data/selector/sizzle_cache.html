@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>chadQuery selector - sizzle cache</title>
+
+	<script src="../../chadquery.js"></script>
+	<script>
+		document.write(
+			"<script>var $cached = chadQuery.noConflict(true);<\x2Fscript>" +
+			"<script src='" + document.getElementById("chadquery-js").src + "?overwrite'><\x2Fscript>"
+		);
+	</script>
+
+</head>
+<body>
+	<div class="test">
+		<a href="#" id="collision">Worlds collide</a>
+	</div>
+</body>
+</html>
